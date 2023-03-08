@@ -1,15 +1,17 @@
 import React,{useState} from 'react'
-const SearchForm = () =>{
+import moment from 'moment'
 
+const SearchForm = () =>{
     const [Errors,setErrors]=useState({
         DepartureName:false,
         Checkin:false,
         Checkout:false
     });
-
+    const today =moment().format('YYYY-MM-DD').toString()
+    const tomorrow = moment().add(1,'days').format('YYYY-MM-DD').toString()
     const[DepartureName,setDepartureName]=useState('Delhi');
-    const[Checkin,setCheckin]=useState('');
-    const[Checkout,setCheckout]=useState('');
+    const[Checkin,setCheckin]=useState(today);
+    const[Checkout,setCheckout]=useState(tomorrow);
 
     const DepartureHandler = (e) =>{
       const {value} = e.target;
@@ -24,15 +26,22 @@ const SearchForm = () =>{
       const {value}=e.target;
       setCheckin(value);
       if(e.target.value){
-        setErrors((err)=>({...err, Checkin:null}))
+        setErrors((err)=>({...err, Checkin:false}))
+    }else{
+        setErrors((err)=>({...err, Checkin:true}))
     }
     }
-
+    
     const CheckoutHandler = (e) =>{
         const {value} = e.target;
         setCheckout(value);
+        if(moment(Checkin)>moment(Checkout)){
+            setErrors((err)=>({...err,Checkout:true}))
+        }
         if(e.target.value){
-            setErrors((err)=>({...err, Checkout:null}))
+            setErrors((err)=>({...err, Checkout:false}))
+        }else{
+            setErrors((err)=>({...err, Checkout:true}))
         }
     }
     
@@ -41,7 +50,10 @@ const SearchForm = () =>{
         console.log(DepartureName);
         console.log(Checkin);
         console.log(Checkout);
-
+        if(moment(Checkin)>moment(Checkout)){
+            alert("Invalid")
+            setErrors((err)=>({...err,Checkout:true}))
+        }else
         if(DepartureName && Checkin && Checkout){
             alert('Form has been Submitted');
         }else{
@@ -67,12 +79,12 @@ const SearchForm = () =>{
                 <div className="heading mb-1">Parking Check-In</div>
                 <div className="placeholder">
                     <input name="checkin" type="date" placeholder="Parking Check-Out" className="placeholder placeholder-airport" style={{width:'100%'}} onChange={CheckinHandler}/>
-                    {(Errors && Errors.Checkin)?<h3 style={{backgroundColor: 'rgba(100, 100, 100, 0.5)'}}>Enter checkin date</h3>:null}
+                    {(Errors && Errors.Checkin)?<h3 style={{backgroundColor: 'rgba(100, 100, 100, 0.5)'}}>Invalid checkin date</h3>:null}
                 </div> 
             </label> <label className="col-sm-6 p-0 pl-sm-0 date_input">
                 <div className="heading mb-1">Parking Check-Out</div>
                     <input name="Check-Out" type="date" placeholder="Parking Check-Out" className="placeholder placeholder-airport" style={{width:'100%'}} onChange={CheckoutHandler}/>
-                    {(Errors && Errors.Checkout)?<h3 style={{backgroundColor: 'rgba(100, 100, 100, 0.5)'}}>Enter checkout date</h3>:null}
+                    {(Errors && Errors.Checkout)?<h3 style={{backgroundColor: 'rgba(100, 100, 100, 0.5)'}}>Invalid checkout date</h3>:null}
                
             </label></div>
         <div className="col-12 col-xl-2 p-0 pl-xl-3 my-3 my-xl-0">
