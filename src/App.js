@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import Homepage from './Pages/Homepage';
 import './style.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import AirportAvailability from './Pages/AirportAvailability';
 import Layout from './Pages/Layout';
 import Login from './Pages/Login';
 function App() {
@@ -12,7 +13,7 @@ function App() {
    <Route path="/" index element={<Homepage/>}/>
    <Route path="/login" element={<Login/>}/>
    <Route path="/*" element={<Homepage/>}/>
-   
+   <Route path="results" element={<AirportAvailability/>}/>
    </Route>
    </Routes>
    </BrowserRouter>
