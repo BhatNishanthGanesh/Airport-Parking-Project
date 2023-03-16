@@ -15,23 +15,25 @@ const Home = () => {
     const [DepartureName, setDepartureName] = useState('Delhi');
     const [Checkin, setCheckin] = useState(today);
     const [Checkout, setCheckout] = useState(tomorrow);
-    // const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    
     const [airports, setAirports] = useState([]);
     const [filteredAirports, setFilteredAirports] = useState('');
 
     const getAirports = async () => {
         try {
+            setLoading(true);
             const { data, status } = await axios.get("http://43.205.1.85:9009/v1/airports");
             if (status === 200 && data) {
                 console.log(data);
                 setAirports(data?.results ?? [])
             } else {
                 setAirports([])
-            } setLoading(false)
+            } 
         } catch (error) {
             setLoading(false)
             console.log(error.message);
-        }
+        }setLoading(false); 
     }
     useEffect(() => {
         getAirports()
@@ -109,8 +111,8 @@ const Home = () => {
             }
     }
 
-    // const [records, setRecords] = useState([]);
-    const [loading, setLoading] = useState(false);
+    
+   
 
     // const fetchData = async () => {
     //     setLoading(true)
@@ -150,14 +152,14 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {loading && <h3>loading..</h3>}
+                        
                         <form action="/results.html" method="post">
                             <div className="options row m-0"><label className="col-12 col-xl-3 p-0 mr-xl-3 mb-2">
                                 <div className="heading mb-1">Departure Airport</div>
                                 <div className="placeholder placeholder-airport">
                                     <input type="text" placeholder="Departure Airport" className="placeholder placeholder-airport" onChange={DepartureHandler} value={DepartureName} />
                                 </div> <i className="fas fa-map-marker-alt input-icon"></i>
-                                {loading ? <h1>Loading</h1> : null}
+                                {loading && <h3>loading..</h3>}
                                 {(Errors && Errors.DepartureName) ? <h3 style={{ backgroundColor: 'rgba(100, 100, 100, 0.5)' }}>Invalid Departure Airport</h3> : null}
                                 <AirportSuggestions airports={filteredAirports} selectAirport={selectAirport} />
 
