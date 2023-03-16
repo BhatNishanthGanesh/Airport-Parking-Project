@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import axios from 'axios'
 import AirportSuggestions from '../components/AirportSuggestions'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const [Errors, setErrors] = useState({
         DepartureName: false,
@@ -15,7 +15,7 @@ const Home = () => {
     const [DepartureName, setDepartureName] = useState('Delhi');
     const [Checkin, setCheckin] = useState(today);
     const [Checkout, setCheckout] = useState(tomorrow);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [airports, setAirports] = useState([]);
     const [filteredAirports, setFilteredAirports] = useState('');
 
@@ -96,7 +96,9 @@ const Home = () => {
         } else
             if (DepartureName && Checkin && Checkout) {
                 alert('Form is submitted')
-                navigate(`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`)
+                // navigate(`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`)
+                window.location.href=`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`
+                
              
             } else {
                 setErrors({
