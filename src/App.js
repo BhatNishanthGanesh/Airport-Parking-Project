@@ -2,7 +2,7 @@ import './style.css';
 import HomePage from './Pages/Home';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import AirportAvailability from './Pages/AirportAvailability';
-import Layout from './component/Layout';
+import Layout from './components/Layout';
 import Login from './Pages/Login';
 function App() {
   return (
