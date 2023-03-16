@@ -1,10 +1,10 @@
 // import logo from './logo.svg';
-import Home from './Pages/Home';
+import Home from './pages/Home';
 import './style.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import AirportAvailability from './Pages/AirportAvailability';
+import AirportAvailability from './pages/AirportAvailability';
 import Layout from './components/Layout';
-import Login from './Pages/Login';
+import Login from './pages/Login';
 function App() {
   return (
    <BrowserRouter>
