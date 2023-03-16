@@ -1,5 +1,4 @@
-
-import Home from './pages/Home';
+import Home from './pages/Home'
 import './style.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import AirportAvailability from './pages/AirportAvailability';
