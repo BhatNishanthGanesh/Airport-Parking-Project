@@ -4,6 +4,7 @@ const AirportSuggestions = ({airports=[],selectAirport})=>{
     if(airports.length===0){
         return null;
     }
+    
     return(
         <div>
             <ul>
