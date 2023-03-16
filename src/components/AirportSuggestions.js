@@ -12,7 +12,7 @@ const AirportSuggestions = ({airports=[],selectAirport})=>{
                     onClick={()=>selectAirport(airport.name)}>{airport.name}</li>
                 ))}
             </ul>
-        </div>
+        </div> 
     )
 }
 
