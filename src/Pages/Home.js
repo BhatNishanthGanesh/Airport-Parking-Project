@@ -97,7 +97,7 @@ const Home = () => {
             if (DepartureName && Checkin && Checkout) {
                 alert('Form is submitted')
                 navigate(`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`)
-                //  window.location.href=`/results?departureAirport=${DepartureName}$checkin=${Checkin}$checkout=${Checkout}`
+             
             } else {
                 setErrors({
                     DepartureName: !DepartureName,
