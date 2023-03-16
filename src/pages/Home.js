@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import axios from 'axios'
 import AirportSuggestions from '../components/AirportSuggestions'
-// import { useNavigate } from 'react-router-dom'
 const SearchForm = () => {
     const [Errors, setErrors] = useState({
-        DepartureName: false,
+        departureName: false,
         Checkin: false,
         Checkout: false
     });
 
     const today = moment().format('YYYY-MM-DD').toString()
     const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD').toString()
-    const [DepartureName, setDepartureName] = useState('Delhi');
+    const [departureName, setdepartureName] = useState('Delhi');
     const [Checkin, setCheckin] = useState(today);
     const [Checkout, setCheckout] = useState(tomorrow);
     const [loading, setLoading] = useState(false);
@@ -43,7 +42,7 @@ const SearchForm = () => {
     }, [])
 
     const selectAirport = (value) => {
-        setDepartureName(value);
+        setdepartureName(value);
         setFilteredAirports([])
     }
 
@@ -51,14 +50,14 @@ const SearchForm = () => {
     const DepartureHandler = (e) => {
         const { value } = e.target;
         if (value.length <= 10) {
-            setDepartureName(value);
+            setdepartureName(value);
         }
-        setDepartureName(value);
+        setdepartureName(value);
         if (e.target.value) {
-            setErrors((err) => ({ ...err, DepartureName: false }))
+            setErrors((err) => ({ ...err, departureName: false }))
         }
         else {
-            setErrors((err) => ({ ...err, DepartureName: true }))
+            setErrors((err) => ({ ...err, departureName: true }))
         }
         const filteredAirportsData = airports.filter((airport) => airport.name.toLowerCase().includes(e.target.value.toLowerCase()));
         setFilteredAirports(filteredAirportsData ?? [])
@@ -92,29 +91,28 @@ const SearchForm = () => {
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-        console.log(DepartureName);
+        console.log(departureName);
         console.log(Checkin);
         console.log(Checkout);
         if (moment(Checkin) > moment(Checkout)) {
             alert("Invalid")
             setErrors((err) => ({ ...err, Checkout: true }))
         } else
-            if (DepartureName && Checkin && Checkout) {
+            if (departureName && Checkin && Checkout) {
                 alert('Form is submitted')
-                // navigate(`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`)
-                window.location.href=`/results?departureAirport=${DepartureName}&checkin=${Checkin}&checkout=${Checkout}`
+                // navigate(`/results?departureAirport=${departureName}&checkin=${Checkin}&checkout=${Checkout}`)
+                window.location.href=`/results?departureAirport=${departureName}&checkin=${Checkin}&checkout=${Checkout}`
                 
              
             } else {
                 setErrors({
-                    DepartureName: !DepartureName,
+                    departureName: !departureName,
                     Checkin: !Checkin,
                     Checkout: !Checkout
                 })
             }
     }
-   
-     
+    
    
 
     // const fetchData = async () => {
@@ -129,19 +127,19 @@ const SearchForm = () => {
 
     return (
         <div>
-            <form action="/results.html" method="post" autoComplete="off" noValidate="">
+            <form action="/results.html" method="post">
                                         <div className="options row m-0"><label className="col-12 col-xl-3 p-0 mr-xl-3 mb-2">
                                                 <div className="heading mb-1">Departure Airport</div>
                                                 <div className="placeholder placeholder-airport">
                                                     <input type="text" onChange={DepartureHandler} 
-                                                    value={DepartureName}  
+                                                    value={departureName}  
                                                     placeholder="Departure Airport" 
                                                     className="placeholder placeholder-airport" />
                                                     
                                                 </div> <i
                                                     className="fas fa-map-marker-alt input-icon"></i>
                                                     {loading && <h3>loading..</h3>}
-                            {(Errors && Errors.DepartureName)? <div><br/><h4 style={{color:"white",backgroundColor:"Highlight"}}>Invalid Departure Airport</h4></div>:null}
+                            {(Errors && Errors.departureName)? <div><br/><h4 style={{color:"white",backgroundColor:"Highlight"}}>Invalid Departure Airport</h4></div>:null}
                             <AirportSuggestions airports={filteredAirports} selectAirport={selectAirport} />
                                                     
                                             </label>
@@ -189,7 +187,7 @@ function Home() {
                   <Header/>
               </app-header> */}
               <div className="content">
-                  <us-page-home inline-template>
+                  {/* <us-page-home inline-template> */}
                       <section id="home_page">
                           <div className="years-of-service">
                               <div className="container">
@@ -268,7 +266,7 @@ function Home() {
                           </section>
   
                       </section>
-                  </us-page-home>
+                  {/* </us-page-home> */}
               </div>
           </div>
       </div>
