@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import axios from 'axios'
-import AirportSuggestions from '../components/AirportSuggestions'
+import AirportSuggestions from '../component/AirportSuggestions'
 import { useNavigate } from 'react-router-dom'
 const Home = () => {
     const [Errors, setErrors] = useState({
