@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import Homepage from './Pages/Home';
+import Home from './Pages/Home';
 import './style.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import AirportAvailability from './Pages/AirportAvailability';
@@ -10,9 +10,9 @@ function App() {
    <BrowserRouter>
    <Routes>
    <Route path="/" element={<Layout/>}>
-   <Route path="/" index element={<Homepage/>}/>
+   <Route path="/" index element={<Home/>}/>
    <Route path="/login" element={<Login/>}/>
-   <Route path="/*" element={<Homepage/>}/>
+   <Route path="/*" element={<Home/>}/>
    <Route path="results" element={<AirportAvailability/>}/>
    </Route>
    </Routes>
