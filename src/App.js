@@ -1,9 +1,9 @@
-import Home from './pages/Home';
+import Home from './Pages/Home';
 import './style.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import AirportAvailability from './pages/AirportAvailability';
+import AirportAvailability from './Pages/AirportAvailability';
 import Layout from './components/Layout';
-import Login from './pages/Login';
+import Login from './Pages/Login';
 function App() {
   return (
    <BrowserRouter>
