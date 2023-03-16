@@ -8,7 +8,7 @@ const SearchForm = () => {
         Checkin: false,
         Checkout: false
     });
-
+    const comment="Invalid Departure Airport";
     const today = moment().format('YYYY-MM-DD').toString()
     const tomorrow = moment().add(1, 'days').format('YYYY-MM-DD').toString()
     const [departureName, setdepartureName] = useState('Delhi');
@@ -139,7 +139,8 @@ const SearchForm = () => {
                                                 </div> <i
                                                     className="fas fa-map-marker-alt input-icon"></i>
                                                     {loading && <h3>loading..</h3>}
-                            {(Errors && Errors.departureName)? <div><br/><h4 style={{color:"white",backgroundColor:"Highlight"}}>Invalid Departure Airport</h4></div>:null}
+                                                    
+                            {(Errors && Errors.departureName)? <div><br/><h4 style={{color:"white",backgroundColor:"Highlight"}}>{comment}</h4></div>:null}
                             <AirportSuggestions airports={filteredAirports} selectAirport={selectAirport} />
                                                     
                                             </label>
