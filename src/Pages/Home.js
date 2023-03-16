@@ -184,7 +184,7 @@ const Home = () => {
             </section>
             <section id="benefits">
                 <div className="container">
-                    <h5>What Can You Save with AirportParkingReservations.com?</h5>
+                    <h5>What Can You Save with AirportParking Reservations.com?</h5>
 
                     <ul className="row">
                         <li className="col-12 col-lg-4 p-3">

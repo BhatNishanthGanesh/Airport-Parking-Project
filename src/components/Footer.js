@@ -68,7 +68,7 @@ const Footer = () =>{
 
         <div className="copyright">
             © 2000 - 2023 AirportParkingReservations.com, Inc. All Rights Reserved.<br />
-            MAG USA, 100 North Lasalle Street, Chicago, IL, 60602
+            MAG USA, 100 North Lasalle Street, Chicago, IL, 60602 .
         </div>
     </div>
 </section>
