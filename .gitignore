@@ -12,7 +12,7 @@
 /build
 
 # misc
-# <h2 style={{ backgroundColor: 'rgba(100, 100, 100, 0.5)' }}>Invalid checkout Date</h2> : null}
+
 .DS_Store
 .env.local
 .env.development.local
