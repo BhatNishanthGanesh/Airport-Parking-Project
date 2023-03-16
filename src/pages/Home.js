@@ -163,7 +163,7 @@ const Home = () => {
                                     <input type="text" placeholder="Departure Airport" className="placeholder placeholder-airport" onChange={DepartureHandler} value={DepartureName} />
                                 </div> <i className="fas fa-map-marker-alt input-icon"></i>
                                 {loading && <h3>loading..</h3>}
-                                {(Errors && Errors.DepartureName) ? <h4 style={{ backgroundColor: 'rgba(100, 100, 100, 0.5)' }}>Invalid Departure Airport</h4> : null}
+                                {(Errors && Errors.DepartureName) ? <h4 style={{color:"white",backgroundColor:"Highlight"}}>Invalid Departure Airport</h4>:null}
                                 <AirportSuggestions airports={filteredAirports} selectAirport={selectAirport} />
 
                             </label>
@@ -172,12 +172,12 @@ const Home = () => {
                                     <div className="heading mb-1">Parking Check-In</div>
                                     <div className="placeholder">
                                         <input name="checkin" type="date" placeholder="Parking Check-In" className="placeholder placeholder-airport" onChange={CheckinHandler} value={Checkin} style={{ width: '100%' }}  />
-                                        {(Errors && Errors.Checkin) ? <h4 style={{ backgroundColor: 'rgba(100, 100, 100, 0.5)' }}>Invalid checkin Date</h4> : null}
+                                        {(Errors && Errors.Checkin) ? <h2 style={{color: "white",backgroundColor:"Highlight"}}>Invalid checkin Date</h2>:null}
                                     </div>
                                 </label> <label className="col-sm-6 p-0 pl-sm-0 date_input">
                                         <div className="heading mb-1">Parking Check-Out</div>
                                         <input name="Check-Out" type="date" placeholder="Parking Check-Out" className="placeholder placeholder-airport" onChange={CheckoutHandler} value={Checkout} style={{ width: '100%' }} />
-                                        {(Errors && Errors.Checkout) ? <h4 style={{ backgroundColor: 'rgba(100, 100, 100, 0.5)' }}>Invalid checkout Date</h4> : null}
+                                        {(Errors && Errors.Checkout) ?  <h2 style={{color: "white",backgroundColor:"Highlight"}}>Invalid checkout Date</h2>:null}
 
                                     </label></div>
                                 <div className="col-12 col-xl-2 p-0 pl-xl-3 my-3 my-xl-0">
